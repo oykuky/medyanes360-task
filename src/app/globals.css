@@ -76,3 +76,7 @@
   }
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent #111827;
+}
