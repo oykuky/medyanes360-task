@@ -49,7 +49,7 @@ const SparklesText = ({
 
   return (
     (<div
-      className={cn("text-4xl text-black", className)}
+      className={cn("text-4xl text-rose-500", className)}
       {...props}
       style={
         {

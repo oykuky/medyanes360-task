@@ -8,7 +8,7 @@ function NotesContainer({ notes, setNotes }) {
       const data = await getAPI("/notes/getNotes");
       setNotes(data);
     } catch (error) {
-      console.error("Error fetching notes:",error);
+      console.error("Error fetching notes:", error);
     }
   };
 
@@ -19,7 +19,7 @@ function NotesContainer({ notes, setNotes }) {
   return (
     <>
       {Array.isArray(notes) > 0 ? (
-        <div className="flex flex-wrap gap-5 justify-center items-center">
+        <div className="flex flex-wrap gap-5 justify-center items-center mt-5">
           {notes.map((note, index) =>
             note && note.title && note.content ? (
               <div key={index}>

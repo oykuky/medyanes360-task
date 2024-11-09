@@ -10,31 +10,30 @@ function CreateNote() {
   const [newNote, setNewNote] = useState({ title: "", content: "" });
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const createNote = async () => {
     try {
       setIsLoading(true);
       const data = await postAPI("/notes/createNote", newNote);
-      console.log("create not dönen",data)
-      if(data.success){
+      if (data.success) {
         toast({
           description: "Not eklendi",
-        })
-      }else{
+        });
+      } else {
         toast({
           variant: "destructive",
           description: `Not eklenemedi! ${data.error}`,
-        })
+        });
       }
       setNotes((prevNotes) =>
         Array.isArray(prevNotes) ? [...prevNotes, data] : [data]
-    );
-    setNewNote({ title: "", content: "" });
-  } catch (error) {
-    console.error("Error creating note:", error);
-  } finally {
-    setIsLoading(false);
+      );
+      setNewNote({ title: "", content: "" });
+    } catch (error) {
+      console.error("Error creating note:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -58,7 +57,7 @@ function CreateNote() {
           onClick={createNote}
           className="bg-green-400 h-10 text-white font-bold px-5 rounded-xl"
         >
-          Create
+          ADD
         </ShinyButton>
       </div>
       {isLoading ? (
