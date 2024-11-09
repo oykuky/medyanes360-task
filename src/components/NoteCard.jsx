@@ -5,6 +5,7 @@ import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { LuDelete } from "react-icons/lu";
 import { IoMdCheckmark } from "react-icons/io";
+import { useToast } from "@/hooks/use-toast";
 
 function NoteCard({ note, setNotes }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -12,6 +13,7 @@ function NoteCard({ note, setNotes }) {
     title: note.title,
     content: note.content,
   });
+  const { toast } = useToast()
 
   const updateNote = async (id) => {
     try {
@@ -26,9 +28,16 @@ function NoteCard({ note, setNotes }) {
             note.id === id ? { ...note, ...editedNote } : note
           )
         );
+        toast({
+          description: "Not başarıyla güncellendi.",
+        })
         setIsEditing(false);
       } else {
         console.error("Updating failed:", data.error);
+        toast({
+          variant: "destructive",
+          description: `Not güncellenemedi ! ${data.error}`,
+        })
       }
     } catch (error) {
       console.error("Error updating:", error);
@@ -38,6 +47,9 @@ function NoteCard({ note, setNotes }) {
   const deleteNote = async (id) => {
     try {
       await deleteAPI(`/notes/deleteNote?id=${note.id}`);
+      toast({
+        description: "Not başarıyla silindi.",
+      })
       setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
     } catch (error) {
       console.error("Error deleting:", error);
@@ -47,14 +59,14 @@ function NoteCard({ note, setNotes }) {
   if (isEditing) {
     return (
       <div className="my-2 mx-5 flex flex-col rounded-xl w-[15rem] md:w-[22rem] h-56 bg-orange-100">
-        <div className="bg-rose-200 rounded-tl-xl rounded-tr-xl mt-0 h-10 pt-1">
+        <div className="bg-rose-200 rounded-tl-xl rounded-tr-xl mt-0">
           <input
             type="text"
             value={editedNote.title}
             onChange={(e) =>
               setEditedNote({ ...editedNote, title: e.target.value })
             }
-            className="w-full px-2 bg-transparent outline-none"
+            className="w-full px-2 bg-transparent outline-none h-10"
           />
         </div>
 
@@ -64,7 +76,7 @@ function NoteCard({ note, setNotes }) {
             onChange={(e) =>
               setEditedNote({ ...editedNote, content: e.target.value })
             }
-            className="w-full h-32 bg-transparent outline-none resize-none"
+            className="w-full h-28 bg-transparent outline-none resize-none"
           />
         </div>
 
