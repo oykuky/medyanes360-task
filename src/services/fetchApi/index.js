@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://medyanes360-task-eight.vercel.app/api"|| "http://localhost:3000/api";
+
 const postAPI = async (
   URL,
   body,
@@ -8,7 +10,7 @@ const postAPI = async (
     if (!process.env.NEXT_PUBLIC_API_URL || !URL) {
       throw new Error("URL bulunamadi!");
     }
-    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
+    const data = await fetch(`${API_BASE_URL + URL}`, {
       method: method,
       headers: headers,
       body: JSON.stringify(body),
@@ -26,7 +28,7 @@ const getAPI = async (
   URL,
   headers = { "Content-Type": "application/json" }
 ) => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
+  const data = await fetch(`${API_BASE_URL + URL}`, {
     method: "GET",
     headers: headers,
     cache: "no-store",
@@ -40,7 +42,7 @@ const deleteAPI = async (
   URL,
   headers = { "Content-Type": "application/json" }
 ) => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
+  const data = await fetch(`${API_BASE_URL + URL}`, {
     method: "DELETE",
     headers: headers,
   })
@@ -56,10 +58,10 @@ const putAPI = async (
   headers = { "Content-Type": "application/json" }
 ) => {
   try {
-    if (!process.env.NEXT_PUBLIC_API_URL || !URL) {
+    if (!API_BASE_URL || !URL) {
       throw new Error("URL bulunamadı!");
     }
-    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
+    const data = await fetch(`${API_BASE_URL + URL}`, {
       method: method,
       headers: headers,
       body: JSON.stringify(body),
