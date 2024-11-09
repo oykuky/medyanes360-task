@@ -1,5 +1,3 @@
-const API_BASE_URL = "https://medyanes360-task-eight.vercel.app" || "http://localhost:3000/api";
-
 const postAPI = async (
   URL,
   body,
@@ -7,10 +5,10 @@ const postAPI = async (
   headers = { "Content-Type": "application/json" }
 ) => {
   try {
-    if (!API_BASE_URL || !URL) {
-      throw new Error("URL bulunamadı!");
+    if (!process.env.NEXT_PUBLIC_API_URL || !URL) {
+      throw new Error("URL bulunamadi!");
     }
-    const data = await fetch(`${API_BASE_URL}${URL}`, {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
       method: method,
       headers: headers,
       body: JSON.stringify(body),
@@ -20,15 +18,14 @@ const postAPI = async (
       .catch((err) => console.log(err));
     return data;
   } catch (err) {
-    throw new Error(`API isteği hatalı: ${err}`);
+    throw new Error(`API istegi hatali ${err}`);
   }
 };
-
 const getAPI = async (
   URL,
   headers = { "Content-Type": "application/json" }
 ) => {
-  const data = await fetch(`${API_BASE_URL}${URL}`, {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
     method: "GET",
     headers: headers,
     cache: "no-store",
@@ -37,12 +34,11 @@ const getAPI = async (
     .catch((err) => console.log(err));
   return data;
 };
-
 const deleteAPI = async (
   URL,
   headers = { "Content-Type": "application/json" }
 ) => {
-  const data = await fetch(`${API_BASE_URL}${URL}`, {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
     method: "DELETE",
     headers: headers,
   })
@@ -50,7 +46,6 @@ const deleteAPI = async (
     .catch((err) => console.log(err));
   return data;
 };
-
 const putAPI = async (
   URL,
   body,
@@ -58,10 +53,10 @@ const putAPI = async (
   headers = { "Content-Type": "application/json" }
 ) => {
   try {
-    if (!API_BASE_URL || !URL) {
+    if (!process.env.NEXT_PUBLIC_API_URL || !URL) {
       throw new Error("URL bulunamadı!");
     }
-    const data = await fetch(`${API_BASE_URL}${URL}`, {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
       method: method,
       headers: headers,
       body: JSON.stringify(body),
@@ -70,8 +65,7 @@ const putAPI = async (
       .catch((err) => console.log(err));
     return data;
   } catch (err) {
-    throw new Error(`API isteği hatalı: ${err}`);
+    throw new Error(`API istegi hatali ${err}`);
   }
 };
-
 export { postAPI, getAPI, deleteAPI, putAPI };
