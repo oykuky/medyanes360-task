@@ -26,24 +26,24 @@ function CreateNote() {
   };
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="mb-7">
+      <div className="mb-7 flex items-center border-[2px] border-green-400 h-16 rounded-xl p-4">
         <input
           type="text"
           placeholder="Title"
           value={newNote.title}
           onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
-          className="outline-none h-12 rounded-md px-2 py-1 mr-2"
+          className="outline-none h-12 rounded-md px-2 py-1 mr-2 focus:border-lime-300 focus:border-[2px]"
         />
         <input
           type="text"
           placeholder="Content"
           value={newNote.content}
           onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
-          className="outline-none h-12 rounded-md px-2 py-1 mr-5"
+          className="outline-none h-12 rounded-md px-2 py-1 mr-5 focus:border-lime-300 focus:border-[2px]"
         />
         <ShinyButton
           onClick={createNote}
-          className="bg-pink-600 h-8 text-white font-bold px-5 rounded-full"
+          className="bg-green-400 h-10 text-white font-bold px-5 rounded-xl"
         >
           Create
         </ShinyButton>
