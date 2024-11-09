@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://medyanes360-task-eight.vercel.app/api"|| "http://localhost:3000/api";
+const API_BASE_URL = "https://medyanes360-task-eight.vercel.app" || "http://localhost:3000/api";
 
 const postAPI = async (
   URL,
