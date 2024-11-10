@@ -38,7 +38,7 @@ function CreateNote() {
   };
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="mb-7 flex items-center border-[2px] border-green-400 h-16 rounded-xl p-4">
+      <div className="mb-7 flex justify-center items-center border-[2px] border-green-400 h-16 rounded-xl p-4">
         <input
           type="text"
           placeholder="Title"
