@@ -25,7 +25,7 @@ const getAPI = async (
   URL,
   headers = { "Content-Type": "application/json" }
 ) => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL + URL}`, {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${URL}`, {
     method: "GET",
     headers: headers,
     cache: "no-store",
