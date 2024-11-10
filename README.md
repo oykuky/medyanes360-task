@@ -2,6 +2,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+## Setup .env file
+### :key: Environment Variables
+
+
+```js
+DATABASE_URL="mongodb+srv://oyku:oyku@mydb.ovovs.mongodb.net/notes-app?retryWrites=true&w=majority&appName=mydb"
+NEXT_PUBLIC_API_URL="http://localhost:3000/api"
+``` 
+
+
 First, run the development server:
 
 ```bash
