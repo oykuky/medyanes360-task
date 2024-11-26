@@ -20,7 +20,7 @@ This project involves the solution of a frontend/backend development task for Me
 
 
 ```js
-DATABASE_URL="mongodb+srv://oyku:oyku@mydb.ovovs.mongodb.net/notes-app?retryWrites=true&w=majority&appName=mydb"
+DATABASE_URL
 NEXT_PUBLIC_API_URL="http://localhost:3000/api"
 ```
 ## App UI :point_down:
